@@ -46,7 +46,7 @@ void setup() {
  
 void loop() {
 #ifdef DEBUG_HX711
-valor= bascula.get_units()
+valor= bascula.get_units();
 if(digitalRead(modo) && k==0){
   Serial.print("[HX7] Leyendo: ");
   Serial.print(valor, 3);
