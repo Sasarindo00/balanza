@@ -19,6 +19,8 @@ int k = 0;
 float valor= 0;
 int mi=0, se=0, t=0;
 int start;
+int intervaloTemp = 1000; // leeremos cada 1 segundos
+long tAnterior = 0; // almacena la ultima vez que se lanzo nuestro tiempo
 
 // led
 const int rs = 12, en = 11, d4 = 2, d5 = 3, d6 = 4, d7 = 5;
@@ -135,7 +137,7 @@ if (digitalRead(tara)){
    if (digitalRead(tim) && t==0){
     anti_debounce(tim);
     t=1;
-//    start=millis();
+
   }
   if (digitalRead(tim) && t==1){
     anti_debounce(tim);
@@ -143,11 +145,16 @@ if (digitalRead(tara)){
     se=0; mi=0;
     lcd.clear();
   }
+ long tActual = millis();
   if( t ==1){
-    
+    if (tActual - tAnterior >= intervaloTemp) {
+    // Han pasado los 1 segundos => lanzamos el evento 
+    // IMPRIMIR POR CONSOLA ESTE VALOR
     tiempo();
-   // start = millis();
-    delay(1000);
+    // Se actualiza el temporizador para el siguiente 1 segundos 
+    tAnterior = tActual;
+    //delay(1000);
+    }
   }
  Serial.println();
 }
