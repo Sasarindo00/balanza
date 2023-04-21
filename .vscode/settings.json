@@ -1,0 +1,5 @@
+{
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "php.validate.executablePath": "c:\\xamp\\php\\php.exe"
+}
